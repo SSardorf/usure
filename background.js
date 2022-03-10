@@ -1,8 +1,11 @@
 // background.js
 
-let color = '#3aa757';
+chrome.tabs.onUpdated.addListener( function (tabId, changeInfo, tab) {
+  console.log("Hi!");
+  if (changeInfo.status == 'loading') {
+    console.log(tab.url);
+    console.log("loading!")
+    // do your things
 
-chrome.runtime.onInstalled.addListener(() => {
-  chrome.storage.sync.set({ color });
-  console.log('Default background color set to %cgreen', `color: ${color}`);
-});
+  }
+})
